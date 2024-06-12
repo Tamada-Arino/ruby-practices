@@ -5,16 +5,8 @@ require "date"
 
 params = ARGV.getopts("y:" "m:")
 
-def get_year(year)
-  year == nil ? Date.today.year : year.to_i
-end
-
-def get_month(month)
-  month == nil ? Date.today.month : month.to_i
-end
-
-year = get_year(params["y"])
-month = get_month(params["m"])
+year = params["y"]&.to_i || Date.today.year
+month = params["m"]&.to_i || Date.today.month
 lastday = Date.new(year, month, -1).day
 week = []
 
