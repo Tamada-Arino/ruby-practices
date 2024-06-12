@@ -9,11 +9,11 @@ scores.map! do |score|
 end
 
 i = 0
-flame = 1
+frame = 1
 result = 0
 
 loop do
-  if flame == 10
+  if frame == 10
     while i <= pitches
       result += scores[i]
       i += 1
@@ -22,15 +22,15 @@ loop do
   elsif scores[i] == 10
     result += 10 + scores[i + 1] + scores[i + 2]
     i += 1
-    flame += 1
+    frame += 1
   elsif scores[i] + scores[i + 1] == 10
     result += 10 + scores[i + 2]
     i += 2
-    flame += 1
+    frame += 1
   else
     result += scores[i] + scores[i + 1]
     i += 2
-    flame += 1
+    frame += 1
   end
 end
 
