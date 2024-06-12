@@ -20,7 +20,7 @@ puts '日 月 火 水 木 金 土'
       week[d] = '  '
     end
   end
-  day < 10 ? week[wday] = " #{day}" : week[wday] = day
+  week[wday] = (day < 10 ? " #{day}" : day)
   if wday == 6 || day == lastday
     puts week.join(' ')
     week = []
