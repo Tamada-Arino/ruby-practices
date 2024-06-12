@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 scores = ARGV[0].chomp.split(',')
-pitches = scores.length - 1
+scores_length = scores.length - 1
 
 scores.map! do |score|
   score == 'X' ? 10 : score.to_i
@@ -14,7 +14,7 @@ result = 0
 
 loop do
   if frame == 10
-    while i <= pitches
+    while i <= scores_length
       result += scores[i]
       i += 1
     end
