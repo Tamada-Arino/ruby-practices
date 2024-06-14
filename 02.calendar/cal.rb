@@ -7,21 +7,21 @@ params = ARGV.getopts('y:' 'm:')
 
 year = params['y']&.to_i || Date.today.year
 month = params['m']&.to_i || Date.today.month
-lastday = Date.new(year, month, -1).day
+first_day = Date.new(year, month, 1)
+last_day = Date.new(year, month, -1)
 week = []
 
 puts "      #{month}月 #{year}"
 puts '日 月 火 水 木 金 土'
 
-(1..lastday).each do |day|
-  wday = Date.new(year, month, day).wday
-  if day == 1 && wday != 0
-    (0..wday).each do |d|
-      week[d] = '  '
+(first_day..last_day).each do |date|
+  if date == first_day && !date.sunday?
+    (1..(date.wday)).each do |d|
+      week << '  '
     end
   end
-  week[wday] = (day < 10 ? " #{day}" : day)
-  if wday == 6 || day == lastday
+  week << (date.day < 10 ? " #{date.day}" : date.day)
+  if date.saturday? || date == last_day
     puts week.join(' ')
     week = []
   end
