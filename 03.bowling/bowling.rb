@@ -9,10 +9,10 @@ scores.map! do |score|
 end
 
 i = 0
-frames = 10
+frames = 1..10
 result = 0
 
-(1..frames).each do |frame|
+frames.each do |frame|
   if frame == 10
     (i..scores_length).each do |i|
       result += scores[i]
