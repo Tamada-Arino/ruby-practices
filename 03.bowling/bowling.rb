@@ -9,28 +9,23 @@ scores.map! do |score|
 end
 
 i = 0
-frame = 1
+frames = 10
 result = 0
 
-loop do
+(1..frames).each do |frame|
   if frame == 10
-    while i <= scores_length
+    (i..scores_length).each do |i|
       result += scores[i]
-      i += 1
     end
-    break
   elsif scores[i] == 10
     result += 10 + scores[i + 1] + scores[i + 2]
     i += 1
-    frame += 1
   elsif scores[i] + scores[i + 1] == 10
     result += 10 + scores[i + 2]
     i += 2
-    frame += 1
   else
     result += scores[i] + scores[i + 1]
     i += 2
-    frame += 1
   end
 end
 
