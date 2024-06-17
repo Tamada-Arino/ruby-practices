@@ -14,13 +14,9 @@ week = []
 puts "      #{month}月 #{year}"
 puts '日 月 火 水 木 金 土'
 
+week += ['  '] * first_day.wday
 (first_day..last_day).each do |date|
-  if date == first_day && !date.sunday?
-    (1..(date.wday)).each do |d|
-      week << '  '
-    end
-  end
-  week << (date.day < 10 ? " #{date.day}" : date.day)
+  week << date.day.to_s.rjust(2)
   if date.saturday? || date == last_day
     puts week.join(' ')
     week = []
