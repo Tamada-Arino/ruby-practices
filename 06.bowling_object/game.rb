@@ -37,7 +37,7 @@ class Game
   private
 
   def strike_score_bonus(next_frame_index)
-    if @frames[next_frame_index].strike? && next_frame_index == 8
+    if @frames[next_frame_index].strike? && next_frame_index == 9
       10 + @frames[next_frame_index].second_shot.score
     elsif @frames[next_frame_index].strike?
       10 + @frames[next_frame_index + 1].first_shot.score
