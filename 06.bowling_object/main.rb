@@ -4,4 +4,4 @@ require_relative 'game'
 
 scores = ARGV[0].chomp.split(',')
 game = Game.new(scores)
-puts game.result_score
+puts game.calc_result

@@ -19,7 +19,7 @@ class Game
     end
   end
 
-  def result_score
+  def calc_result
     result = 0
     @frames.each.with_index do |frame, i|
       result += frame.frame_score
