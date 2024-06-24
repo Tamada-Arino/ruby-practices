@@ -42,7 +42,7 @@ class Game
     elsif @frames[next_index].strike?
       10 + @frames[next_index + 1].first_shot.score
     else
-      @frames[i + 1].first_shot.score + @frames[i + 1].second_shot.score
+      @frames[next_index].first_shot.score + @frames[next_index].second_shot.score
     end
   end
 
