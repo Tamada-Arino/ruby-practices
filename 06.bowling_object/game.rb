@@ -25,9 +25,9 @@ class Game
       result += frame.frame_score
       if i < 9
         if frame.strike?
-          result += strike_score_bonus(i)
+          result += strike_score_bonus(i + 1)
         elsif frame.spare?
-          result += spare_score_bonus(i)
+          result += spare_score_bonus(i + 1)
         end
       end
     end
@@ -36,17 +36,17 @@ class Game
 
   private
 
-  def strike_score_bonus(i)
-    if @frames[i + 1].strike? && i == 8
-      10 + @frames[i + 1].second_shot.score
-    elsif @frames[i + 1].strike?
-      10 + @frames[i + 2].first_shot.score
+  def strike_score_bonus(next_index)
+    if @frames[next_index].strike? && i == 8
+      10 + @frames[next_index].second_shot.score
+    elsif @frames[next_index].strike?
+      10 + @frames[next_index + 1].first_shot.score
     else
       @frames[i + 1].first_shot.score + @frames[i + 1].second_shot.score
     end
   end
 
-  def spare_score_bonus(i)
-    @frames[i + 1].first_shot.score
+  def spare_score_bonus(next_index)
+    @frames[next_index].first_shot.score
   end
 end
