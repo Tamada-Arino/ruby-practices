@@ -1,4 +1,10 @@
+# frozen_string_literal: true
+
+require_relative 'shot'
+
 class Frame
+  attr_reader :first_shot, :second_shot, :third_shot
+
   def initialize(first_shot, second_shot, third_shot = nil)
     @first_shot = Shot.new(first_shot)
     @second_shot = Shot.new(second_shot)
@@ -6,12 +12,14 @@ class Frame
   end
 
   def strike?
-    return true if @first_shot == 'X'
-    false
+    first_shot.score == 10
   end
 
   def spare?
-    return true if @first_shot + @second_shot == 10
-    false
+    !strike? && first_shot.score + second_shot.score == 10
+  end
+
+  def frame_score
+    first_shot.score + second_shot.score + third_shot.score
   end
 end
