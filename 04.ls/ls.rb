@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-files = Dir.glob("*").sort
+files = Dir.glob('*').sort
 
 cols = 3
 max_row = (files.length / cols.to_f).ceil
@@ -14,4 +15,4 @@ files.each.with_index do |file, i|
   col += 1 if row == max_row - 1
 end
 
-puts print_files.map{|d| d.join("  ")}
+puts(print_files.map { |d| d.join('  ') })
