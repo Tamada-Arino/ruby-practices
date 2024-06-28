@@ -16,9 +16,9 @@ class Frame
     result = shots.sum(&:score)
     if @frame_number < 9
       if strike?
-        result += strike_score_bonus(frames)
+        result += calc_strike_bonus(frames)
       elsif spare?
-        result += spare_score_bonus(frames)
+        result += calc_spare_bonus(frames)
       end
     end
     result
@@ -34,7 +34,7 @@ class Frame
     !strike? && shots.first(2).sum(&:score) == 10
   end
 
-  def strike_score_bonus(frames)
+  def calc_strike_bonus(frames)
     next_frame_index = @frame_number + 1
     next_frame = frames[next_frame_index]
     if next_frame.strike? && next_frame_index == 9
@@ -46,7 +46,7 @@ class Frame
     end
   end
 
-  def spare_score_bonus(frames)
+  def calc_spare_bonus(frames)
     frames[@frame_number + 1].shots[0].score
   end
 end
