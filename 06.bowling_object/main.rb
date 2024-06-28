@@ -2,6 +2,6 @@
 
 require_relative 'game'
 
-shots = ARGV[0].chomp.split(',')
-game = Game.new(shots)
+scores = ARGV[0].chomp.split(',')
+game = Game.new(scores)
 puts game.calc_result
