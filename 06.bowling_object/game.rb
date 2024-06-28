@@ -9,15 +9,16 @@ class Game
     shots_index = 0
     @frames = []
     (1..10).each do |frame_number|
-      if frame_number == 10
-        @frames << Frame.new(frame_number, *shots[shots_index, 3])
-      elsif shots[shots_index].strike?
-        @frames << Frame.new(frame_number, shots[shots_index])
-        shots_index += 1
-      else
-        @frames << Frame.new(frame_number, *shots[shots_index, 2])
-        shots_index += 2
-      end
+      length =
+        if frame_number == 10
+          3
+        elsif shots[shots_index].strike?
+          1
+        else
+          2
+        end
+      @frames << Frame.new(frame_number, *shots[shots_index, length])
+      shots_index += length
     end
   end
 
