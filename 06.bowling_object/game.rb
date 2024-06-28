@@ -9,7 +9,7 @@ class Game
     (1..10).each do |frame_number|
       if frame_number == 10
         @frames << Frame.new(frame_number, *scores[score_index, 3])
-      elsif scores[score_index] == 'X'
+      elsif scores[score_index].strike?
         @frames << Frame.new(frame_number, 'X', 0)
         score_index += 1
       else
