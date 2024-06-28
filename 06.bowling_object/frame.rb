@@ -19,11 +19,11 @@ class Frame
   end
 
   def spare?
-    !strike? && shots[0].score + shots[1].score == 10
+    !strike? && shots.first(2).sum(&:score) == 10
   end
 
   def calc_score(frames)
-    result = shots[0].score + shots[1].score + shots[2].score
+    result = shots.sum(&:score)
     if frame_number < 10
       if strike?
         result += strike_score_bonus(frames, frame_number)
