@@ -4,10 +4,7 @@ require_relative 'frame'
 
 class Game
   def initialize(scores)
-    shots = []
-    scores.each do |shot|
-      shots << Shot.new(shot)
-    end
+    shots = scores.map { |shot| Shot.new(shot) }
 
     shots_index = 0
     @frames = []
