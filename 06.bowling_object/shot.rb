@@ -10,4 +10,8 @@ class Shot
   def score
     shot == 'X' ? 10 : shot.to_i
   end
+
+  def strike?
+    shot == 'X'
+  end
 end
