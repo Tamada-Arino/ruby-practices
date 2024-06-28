@@ -4,17 +4,17 @@ require_relative 'frame'
 
 class Game
   def initialize(scores)
-    i = 0
+    score_index = 0
     @frames = []
     (1..10).each do |frame|
       if frame == 10
-        @frames << Frame.new(scores[i], scores[i + 1], scores[i + 2])
-      elsif scores[i] == 'X'
+        @frames << Frame.new(scores[score_index], scores[score_index + 1], scores[score_index + 2])
+      elsif scores[score_index] == 'X'
         @frames << Frame.new('X', 0)
-        i += 1
+        score_index += 1
       else
-        @frames << Frame.new(scores[i], scores[i + 1])
-        i += 2
+        @frames << Frame.new(scores[score_index], scores[score_index + 1])
+        score_index += 2
       end
     end
   end
