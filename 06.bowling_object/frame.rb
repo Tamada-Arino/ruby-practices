@@ -9,9 +9,9 @@ class Frame
     @frame_number = frame_number
     @shots = [
       Shot.new(first_shot),
-      Shot.new(second_shot),
-      Shot.new(third_shot)
+      Shot.new(second_shot)
     ]
+    @shots << Shot.new(third_shot) unless third_shot.nil?
   end
 
   def strike?
