@@ -37,12 +37,13 @@ class Frame
   private
 
   def strike_score_bonus(frames, next_frame_index)
-    if frames[next_frame_index].strike? && next_frame_index == 9
-      10 + frames[next_frame_index].shots[1].score
-    elsif frames[next_frame_index].strike?
+    next_frame = frames[next_frame_index]
+    if next_frame.strike? && next_frame_index == 9
+      10 + next_frame.shots[1].score
+    elsif next_frame.strike?
       10 + frames[next_frame_index + 1].shots[0].score
     else
-      frames[next_frame_index].shots[0].score + frames[next_frame_index].shots[1].score
+      next_frame.shots[0].score + next_frame.shots[1].score
     end
   end
 
