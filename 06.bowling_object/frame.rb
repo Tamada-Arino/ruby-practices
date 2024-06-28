@@ -42,7 +42,7 @@ class Frame
     elsif next_frame.strike?
       10 + frames[next_frame_index + 1].shots[0].score
     else
-      next_frame.shots[0].score + next_frame.shots[1].score
+      next_frame.shots.first(2).sum(&:score)
     end
   end
 
