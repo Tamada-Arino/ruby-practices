@@ -8,12 +8,12 @@ class Game
     @frames = []
     (1..10).each do |frame|
       if frame == 10
-        @frames << Frame.new(scores[score_index], scores[score_index + 1], scores[score_index + 2])
+        @frames << Frame.new(frame, scores[score_index], scores[score_index + 1], scores[score_index + 2])
       elsif scores[score_index] == 'X'
-        @frames << Frame.new('X', 0)
+        @frames << Frame.new(frame, 'X', 0)
         score_index += 1
       else
-        @frames << Frame.new(scores[score_index], scores[score_index + 1])
+        @frames << Frame.new(frame, scores[score_index], scores[score_index + 1])
         score_index += 2
       end
     end
@@ -38,15 +38,15 @@ class Game
 
   def strike_score_bonus(next_frame_index)
     if @frames[next_frame_index].strike? && next_frame_index == 9
-      10 + @frames[next_frame_index].shots[1].score
+      10 + @frames[next_frame_index].shots[2].score
     elsif @frames[next_frame_index].strike?
-      10 + @frames[next_frame_index + 1].shots[0].score
+      10 + @frames[next_frame_index + 1].shots[1].score
     else
-      @frames[next_frame_index].shots[0].score + @frames[next_frame_index].shots[1].score
+      @frames[next_frame_index].shots[1].score + @frames[next_frame_index].shots[2].score
     end
   end
 
   def spare_score_bonus(next_frame_index)
-    @frames[next_frame_index].shots[0].score
+    @frames[next_frame_index].shots[1].score
   end
 end
