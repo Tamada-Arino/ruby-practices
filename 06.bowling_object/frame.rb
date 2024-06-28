@@ -7,10 +7,11 @@ class Frame
 
   def initialize(frame_number, first_shot, second_shot, third_shot = nil)
     @frame_number = frame_number
-    @shots= []
-    @shots << Shot.new(first_shot)
-    @shots << Shot.new(second_shot)
-    @shots << Shot.new(third_shot)
+    @shots= [
+      Shot.new(first_shot),
+      Shot.new(second_shot),
+      Shot.new(third_shot)
+    ]
   end
 
   def strike?
