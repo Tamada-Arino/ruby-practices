@@ -3,23 +3,24 @@
 require_relative 'shot'
 
 class Frame
-  attr_reader :first_shot, :second_shot, :third_shot
+  attr_reader :shots
 
   def initialize(first_shot, second_shot, third_shot = nil)
-    @first_shot = Shot.new(first_shot)
-    @second_shot = Shot.new(second_shot)
-    @third_shot = Shot.new(third_shot)
+    @shots= []
+    @shots << Shot.new(first_shot)
+    @shots << Shot.new(second_shot)
+    @shots << Shot.new(third_shot)
   end
 
   def strike?
-    first_shot.score == 10
+    @shots[0].score == 10
   end
 
   def spare?
-    !strike? && first_shot.score + second_shot.score == 10
+    !strike? && @shots[0].score + @shots[1].score == 10
   end
 
   def frame_score
-    first_shot.score + second_shot.score + third_shot.score
+    @shots[0].score + @shots[1].score + @shots[2].score
   end
 end

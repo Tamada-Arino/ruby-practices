@@ -38,15 +38,15 @@ class Game
 
   def strike_score_bonus(next_frame_index)
     if @frames[next_frame_index].strike? && next_frame_index == 9
-      10 + @frames[next_frame_index].second_shot.score
+      10 + @frames[next_frame_index].shots[1].score
     elsif @frames[next_frame_index].strike?
-      10 + @frames[next_frame_index + 1].first_shot.score
+      10 + @frames[next_frame_index + 1].shots[0].score
     else
-      @frames[next_frame_index].first_shot.score + @frames[next_frame_index].second_shot.score
+      @frames[next_frame_index].shots[0].score + @frames[next_frame_index].shots[1].score
     end
   end
 
   def spare_score_bonus(next_frame_index)
-    @frames[next_frame_index].first_shot.score
+    @frames[next_frame_index].shots[0].score
   end
 end
