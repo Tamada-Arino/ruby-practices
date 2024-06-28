@@ -8,7 +8,7 @@ class Game
 
     shots_index = 0
     @frames = []
-    (0..9).each do |frame_number|
+    0.upto(9).each do |frame_number|
       length =
         if frame_number == 9
           3
