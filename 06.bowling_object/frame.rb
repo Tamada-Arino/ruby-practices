@@ -12,14 +12,6 @@ class Frame
     @shots << third_shot unless third_shot.nil?
   end
 
-  def strike?
-    shots[0].score == 10
-  end
-
-  def spare?
-    !strike? && shots.first(2).sum(&:score) == 10
-  end
-
   def calc_score(frames)
     result = shots.sum(&:score)
     if frame_number < 10
@@ -32,7 +24,15 @@ class Frame
     result
   end
 
-  private
+  protected
+
+  def strike?
+    shots[0].score == 10
+  end
+
+  def spare?
+    !strike? && shots.first(2).sum(&:score) == 10
+  end
 
   def strike_score_bonus(frames, next_frame_index)
     next_frame = frames[next_frame_index]
