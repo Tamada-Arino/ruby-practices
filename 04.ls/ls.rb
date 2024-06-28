@@ -15,4 +15,4 @@ files.each.with_index do |file, i|
   col += 1 if row == max_row - 1
 end
 
-puts(print_files.map { |d| d.join('  ') })
+puts(print_files.map { |file| file.join('  ') })
