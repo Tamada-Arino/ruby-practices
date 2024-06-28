@@ -14,11 +14,11 @@ class Frame
 
   def calc_score(frames)
     result = shots.sum(&:score)
-    if frame_number < 10
+    if frame_number < 9
       if strike?
-        result += strike_score_bonus(frames, frame_number)
+        result += strike_score_bonus(frames, frame_number + 1)
       elsif spare?
-        result += spare_score_bonus(frames, frame_number)
+        result += spare_score_bonus(frames, frame_number + 1)
       end
     end
     result

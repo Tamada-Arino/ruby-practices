@@ -8,9 +8,9 @@ class Game
 
     shots_index = 0
     @frames = []
-    (1..10).each do |frame_number|
+    (0..9).each do |frame_number|
       length =
-        if frame_number == 10
+        if frame_number == 9
           3
         elsif shots[shots_index].strike?
           1
