@@ -37,10 +37,12 @@ class Frame
   def calc_strike_bonus(frames)
     next_frame_index = @frame_number + 1
     next_frame = frames[next_frame_index]
-    if next_frame.strike? && next_frame_index == 9
-      10 + next_frame.shots[1].score
-    elsif next_frame.strike?
-      10 + frames[next_frame_index + 1].shots[0].score
+    if next_frame.strike?
+      if next_frame_index == 9
+        10 + next_frame.shots[1].score
+      else
+        10 + frames[next_frame_index + 1].shots[0].score
+      end
     else
       next_frame.shots.first(2).sum(&:score)
     end
