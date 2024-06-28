@@ -10,7 +10,7 @@ class Game
       if frame_number == 10
         @frames << Frame.new(frame_number, *scores[score_index, 3])
       elsif scores[score_index].strike?
-        @frames << Frame.new(frame_number, 'X', 0)
+        @frames << Frame.new(frame_number, 'X')
         score_index += 1
       else
         @frames << Frame.new(frame_number, *scores[score_index, 2])

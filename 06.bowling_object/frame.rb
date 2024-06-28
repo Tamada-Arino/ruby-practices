@@ -5,7 +5,7 @@ require_relative 'shot'
 class Frame
   attr_reader :shots, :frame_number
 
-  def initialize(frame_number, first_shot, second_shot, third_shot = nil)
+  def initialize(frame_number, first_shot, second_shot = 0, third_shot = nil)
     @frame_number = frame_number
     @shots = [
       Shot.new(first_shot),
