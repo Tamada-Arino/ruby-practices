@@ -3,15 +3,15 @@
 class Shot
   attr_reader :shot
 
-  def initialize(shot)
-    @shot = shot
+  def initialize(mark)
+    @mark = mark
   end
 
   def score
-    shot == 'X' ? 10 : shot.to_i
+    mark == 'X' ? 10 : mark.to_i
   end
 
   def strike?
-    shot == 'X'
+    mark == 'X'
   end
 end
