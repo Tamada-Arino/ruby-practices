@@ -6,7 +6,7 @@ files = Dir.glob('*').sort
 cols = 3
 max_row = (files.length / cols.to_f).ceil
 max_char_length = files.map(&:length).max
-print_files = Array.new(max_row) { Array.new(cols) }
+print_files = Array.new(max_row) { [] }
 col = 0
 
 files.each.with_index do |file, i|
